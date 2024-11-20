@@ -35,16 +35,17 @@ publish the release.
 1. Connect to your server
    ```sh
    ssh -i <private key path> <user>@<host>
+   ssh -i "thunt-keypair.pem" ec2-user@ec2-3-145-179-86.us-east-2.compute.amazonaws.com
    ```
 
 2. Add environment variables
    ```sh
-   echo "MYSQL_ROOT_PASSWORD=myrootpw
+   echo "MYSQL_ROOT_PASSWORD=
    MYSQL_DATABASE=mydb
-   MYSQL_USER=myuser
-   MYSQL_PASSWORD=mypw
+   MYSQL_USER=thunt
+   MYSQL_PASSWORD=
    DOCKER_IMAGE_NAME=ci-cd
-   GITHUB_USER=mathiasreker" >~/.env
+   GITHUB_USER=citrusoft" >~/.env
    ```
 
    _`MYSQL_ROOT_PASSWORD`, `MYSQL_DATABASE`, `MYSQL_USER` and `MYSQL_PASSWORD` can be anything._
@@ -56,12 +57,19 @@ publish the release.
 
 > _This script replaces step 3-6 (optional)_
 > ```sh
-> bash <(curl -s https://raw.githubusercontent.com/MathiasReker/Java-CI-CD/develop/install.bash)
+>bash <(curl -s https://raw.githubusercontent.com/citrusoft/JavaCICDevSecOps/develop/install.bash)
 > ```
 
 3. Install docker-compose
    ```sh
-   sudo apt-get update && sudo apt-get install -y docker-compose
+   # sudo apt-get update && sudo apt-get install -y docker-compose
+   sudo yum update -y
+   sudo yum install -y docker
+   sudo service docker start
+   sudo usermod -a -G docker ec2-user
+   sudo curl -L "https://github.com/docker/compose/releases/download/v2.30.3/docker-compose-linux-x86_64" -o /usr/local/bin/docker-compose
+   sudo chmod 755 /usr/local/bin/docker-compose
+   docker-compose version
    ```
 
 4. Generate a new key named `github-actions` with an empty password
