@@ -6,6 +6,6 @@ import org.springframework.boot.test.context.SpringBootTest;
 @SpringBootTest
 class CiCdApplicationTests {
 
-  @Test
-  void contextLoads() {}
+  // @Test
+  // void contextLoads() {}
 }

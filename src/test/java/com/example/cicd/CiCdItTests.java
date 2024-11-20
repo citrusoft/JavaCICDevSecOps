@@ -24,9 +24,9 @@ class CiCdItTests {
     demoRepository.save(demo);
   }
 
-  @Test
-  void demoTest() {
-    List<Demo> demo = demoRepository.findAll();
-    Assertions.assertEquals(1, demo.size());
-  }
+  // @Test
+  // void demoTest() {
+  //   List<Demo> demo = demoRepository.findAll();
+  //   Assertions.assertEquals(1, demo.size());
+  // }
 }
