@@ -10,7 +10,7 @@
 <div align="center">
 <h3>CI/CD GitHub Action :rocket:</h3>
   <p>
-    A CI/CD workflow for your maven project!
+    A CI/CD workflow for your java, maven project, docker plus mysql!
   </p>
 </div>
 
